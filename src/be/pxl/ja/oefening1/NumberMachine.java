@@ -1,6 +1,7 @@
 package be.pxl.ja.oefening1;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class NumberMachine {
 
@@ -12,8 +13,6 @@ public class NumberMachine {
 		}
 	}
 
-	/*
-	TODO: uncomment this method after the NumberFilter interface is created.
 	public String processNumbers(NumberFilter filter) {
 		String result = "";
 		for(int i=0;i<numbers.size();i++) {
@@ -26,5 +25,31 @@ public class NumberMachine {
 		}
 		return result;
 	}
-	*/
+
+	public String convertNumbers(Predicate<Integer> filter) {
+		String resultaat = "";
+		for(int i=0;i<numbers.size();i++) {
+			if(filter.test(numbers.get(i))) {
+				if(!resultaat.equals("")) {
+					resultaat += "-";
+				}
+				resultaat += (Integer.toHexString(numbers.get(i)));
+			}
+		}
+		return resultaat;
+
+	}
+
 }
+
+
+/*public ArrayList<VideoGame> selectGames(Predicate<VideoGame> filter) {
+		ArrayList<VideoGame> gameList = new ArrayList<>();
+		for (int i = 0; i < videoGames.size(); i++) {
+			if (filter.test(videoGames.get(i))) {
+				gameList.add(videoGames.get(i));
+			}
+		}
+		return gameList;
+	}
+	*/
